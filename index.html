@@ -13,11 +13,11 @@
             <h1>JS Barcode Generator</h1>
             <p>Generate barcodes using JSBarcode library</p>
         </header>
-        <div class="main">
-            
+        <main>
             <div class="form-container">
-                <form id="barcode-form">
+                <div id="barcode-form">
                     <fieldset>
+                        <input type="text" id="barcode-name" placeholder="Enter barcode name here" required>
                         <input type="text" id="itemcode-input" placeholder="Enter item code here" required>
                         <label for="barcode-type" id="barcode-type-label">Select Barcode Type:</label>
                         <select id="barcode-type">
@@ -31,14 +31,40 @@
                             <option value="EAN8">EAN8</option>
                             <option value="PHARMA">PHARMA</option>
                         </select>
-                        <div class="checkbox">
+                        <!-- <div class="checkbox">
                             <input type="checkbox" id="show-text" checked>
                             <label for="show-text" id="show-text-label">Show Text</label>
-                        </div>
+                        </div> -->
                     </fieldset>
-                    <button type="submit" id="submit-btn">Generate Barcode</button>
-                </form>
+                    <button id="add-btn" type="button">Add Barcode</button>
+                </div>
+                <div class="barcode-list">
+                    <div class="list-header">
+                        <h2>Barcode List</h2>
+                        <button class="clear-btn">Clear All</button>
+                    </div>
+                    <ul class="barcode-items">
+                        <!-- Barcode items will be dynamically added here -->
+                        <li class="barcode-item">
+                            <div class="data-container">
+                                <span class="barcode-name">Sample Barcode</span>
+                                <span class="barcode-text">000000</span>
+                                <span class="barcode-type">CODE128</span>
+                            </div>
+                            <div class="options">
+                                <!-- <button class="edit-btn">Edit</button> -->
+                                <button class="delete-btn">Delete</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+            <div class="barcode-display">
+                <h2>Generated Barcodes</h2>
+                <div class="barcode-container">
+                    <!-- Barcode SVG will be dynamically generated here -->
+                </div>
+            </div>
+        </main>
     </body>
 </html>
