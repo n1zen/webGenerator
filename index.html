@@ -9,34 +9,35 @@
         <script src="index.js" defer></script>
     </head>
     <body>
-        <div class="main">
+        <header>
             <h1>JS Barcode Generator</h1>
+            <p>Generate barcodes using JSBarcode library</p>
+        </header>
+        <div class="main">
+            
             <div class="form-container">
                 <form id="barcode-form">
-                    <label for="itemcode-input">Enter Item Code:</label>
-                    <input type="text" id="itemcode-input" placeholder="Enter item code here" required>
-                    <br>
-                    <label for="barcode-type">Select Barcode Type:</label>
-                    <select id="barcode-type">
-                        <option value="CODE128">CODE128</option>
-                        <option value="EAN13">EAN13</option>
-                        <option value="UPC">UPC</option>
-                        <option value="CODE39">CODE39</option>
-                        <option value="ITF14">ITF14</option>
-                        <option value="CODE93">CODE93</option>
-                        <option value="MSI">MSI</option>
-                        <option value="EAN8">EAN8</option>
-                        <option value="PHARMA">PHARMA</option>
-                    </select>
-                    <br>
-                    <input type="checkbox" id="show-text" checked>
-                    <label for="show-text">Show Text</label>
-                    <br>
-                    <button type="submit">Generate Barcode</button>
+                    <fieldset>
+                        <input type="text" id="itemcode-input" placeholder="Enter item code here" required>
+                        <label for="barcode-type" id="barcode-type-label">Select Barcode Type:</label>
+                        <select id="barcode-type">
+                            <option value="CODE128">CODE128</option>
+                            <option value="EAN13">EAN13</option>
+                            <option value="UPC">UPC</option>
+                            <option value="CODE39">CODE39</option>
+                            <option value="ITF14">ITF14</option>
+                            <option value="CODE93">CODE93</option>
+                            <option value="MSI">MSI</option>
+                            <option value="EAN8">EAN8</option>
+                            <option value="PHARMA">PHARMA</option>
+                        </select>
+                        <div class="checkbox">
+                            <input type="checkbox" id="show-text" checked>
+                            <label for="show-text" id="show-text-label">Show Text</label>
+                        </div>
+                    </fieldset>
+                    <button type="submit" id="submit-btn">Generate Barcode</button>
                 </form>
-            </div>
-            <div class="barcode-container">
-                <svg id="barcode"></svg>
             </div>
         </div>
     </body>
