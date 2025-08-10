@@ -32,6 +32,7 @@
                             <option value="EAN8">EAN8</option>
                             <option value="PHARMA">PHARMA</option>
                         </select>
+                        <span class="error-message disable" id="error-message"></span>
                     </fieldset>
                     <button id="add-btn" type="button">Add Barcode</button>
                 </div>
@@ -42,24 +43,14 @@
                     </div>
                     <ul class="barcode-items">
                         <!-- Barcode items will be dynamically added here -->
-                        <!-- <li class="barcode-item">
-                            <div class="data-container">
-                                <span class="barcode-name">Sample Barcode</span>
-                                <span class="barcode-text">000000</span>
-                                <span class="barcode-type">CODE128</span>
-                            </div>
-                            <div class="options">
-                                <button class="delete-btn">Delete</button>
-                            </div>
-                        </li> -->
                     </ul>
                 </div>
                 <button type="button" class="generate-btn">Generate Barcodes</button>
             </div>
             <div class="barcode-display-container disable">
-                <div class="barcode-display">
-                    <!-- This section will be populated with generated barcodes -->
-                </div>
+                <!-- <div class="barcode-display">
+                    
+                </div> -->
             </div>
             <footer>
                 <p>Created by: <a href="https://github.com/n1zen">n1zen</a></p>

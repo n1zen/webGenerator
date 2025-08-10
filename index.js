@@ -28,12 +28,8 @@ clearAllBtn.addEventListener('click', function() {
     clearUrlStorage();
 
     // Reset the barcode display
-    const barcodeDisplayContainer = document.querySelector('.barcode-display-container');
-    const barcodeDisplay = document.querySelector('.barcode-display');
-    barcodeDisplay.innerHTML = ''; // Clear existing barcodes
-    barcodeDisplayContainer.classList.add('disable'); // Disable the display
-    barcodeDisplayContainer.innerHTML = ''; // Clear the display container
-    barcodeDisplayContainer.appendChild(barcodeDisplay);
+    resetGeneratedBarcodes();
+
     // Refresh the barcode list display
     displayBarcodeList();
 });
@@ -52,7 +48,7 @@ addItemBtn.addEventListener('click', function() {
     let barcodeValue = itemCodeTxtBox.value.trim();
     let barcodeType = barcodeTypeSelect.value;
 
-    // Validate inputs
+    // Validate if the inputs are not empty
     if(barcodeName == '' || barcodeName == null) {
         alert('Please enter a name for the barcode.');
         return;
@@ -64,6 +60,52 @@ addItemBtn.addEventListener('click', function() {
     if(barcodeType == '' || barcodeType == null) {
         alert('Please select a barcode type.'); 
         return;
+    }
+
+    // Validate the barcode value based on the selected type
+    if (!validateBarcodeValue(barcodeValue, barcodeType)) {
+        alert('Invalid barcode value for the selected type. Please check the format.');
+        // Display an error message
+        const errorMessage = document.getElementById('error-message');
+        errorMessage.classList.remove('disable'); // Show the error message
+        switch (barcodeType) {
+            case 'CODE128':
+                errorMessage.textContent = 'CODE128 requires alphanumeric characters.';
+                break;
+            case 'EAN13':
+                errorMessage.textContent = 'EAN13 requires exactly 13 digits.';
+                break;
+            case 'UPC':
+                errorMessage.textContent = 'UPC requires exactly 12 digits.';
+                break;
+            case 'CODE39':
+                errorMessage.textContent = 'CODE39 allows alphanumeric characters and some special characters (- . $ / + %).';
+                break;
+            case 'ITF14':
+                errorMessage.textContent = 'ITF14 requires exactly 14 digits.';
+                break;
+            case 'CODE93':
+                errorMessage.textContent = 'CODE93 allows alphanumeric characters and some special characters (- . $ / + %).';
+                break;
+            case 'MSI':
+                errorMessage.textContent = 'MSI requires digits only.';
+                break;
+            case 'EAN8':
+                errorMessage.textContent = 'EAN8 requires exactly 8 digits.';
+                break;
+            case 'PHARMA':
+                errorMessage.textContent = 'PHARMA allows alphanumeric characters and some special characters (-    . $ / + %).';
+                break;
+            default:
+                errorMessage.textContent = 'Invalid barcode type selected.';
+                break;
+        }
+        return;
+    } else {
+        // Hide the error message if validation passes
+        const errorMessage = document.getElementById('error-message');
+        errorMessage.classList.add('disable'); // Hide the error message
+        errorMessage.textContent = ''; // Clear the message
     }
 
     // Check if barcode already exists
@@ -162,15 +204,26 @@ function displayBarcodeList() {
     });
 }
 
+function resetGeneratedBarcodes() {
+    // Reset the barcode display
+    const barcodeDisplayContainer = document.querySelector('.barcode-display-container');
+    barcodeDisplayContainer.innerHTML = ''; // Clear existing barcodes
+    barcodeDisplayContainer.classList.add('disable'); // Disable the display
+}
 
 // Generate barcodes and display them
 const generateBtn = document.querySelector('.generate-btn');
 generateBtn.addEventListener('click', function() {
 
+    clearUrlStorage(); // Clear the barcode URL storage
+    barcodeURL = []; // Reset the barcode URL array
+
     // Get the containers for displaying barcodes
-    const barcodeDisplay = document.querySelector('.barcode-display');
-    barcodeDisplay.innerHTML = ''; // Clear existing barcodes
     const barcodeDisplayContainer = document.querySelector('.barcode-display-container');
+    barcodeDisplayContainer.innerHTML = ''; // Clear existing barcodes
+    const barcodeDisplay = document.createElement('div');
+    barcodeDisplay.classList.add('barcode-display');
+    barcodeDisplayContainer.appendChild(barcodeDisplay);
 
     // Check if there are any barcodes to generate
     // If there are no barcodes, show an alert and disable the display
@@ -263,3 +316,30 @@ generateBtn.addEventListener('click', function() {
     }
     console.log('All barcodes generated and displayed.', barcodeURL);
 });
+
+
+function validateBarcodeValue(barcodeValue, barcodeType) {
+    // Add validation logic based on the barcode type
+    switch (barcodeType) {
+        case 'CODE128':
+            return /^[A-Za-z0-9]+$/.test(barcodeValue); // Alphanumeric characters
+        case 'EAN13':
+            return /^\d{13}$/.test(barcodeValue); // 13 digits
+        case 'UPC':
+            return /^\d{12}$/.test(barcodeValue); // 12 digits
+        case 'CODE39':
+            return /^[A-Za-z0-9\-\. $\/+%]+$/.test(barcodeValue); // Alphanumeric and some special characters
+        case 'ITF14':
+            return /^\d{14}$/.test(barcodeValue); // 14 digits
+        case 'CODE93':
+            return /^[A-Za-z0-9\-\. $\/+%]+$/.test(barcodeValue); // Alphanumeric and some special characters
+        case 'MSI':
+            return /^\d+$/.test(barcodeValue); // Digits only
+        case 'EAN8':
+            return /^\d{8}$/.test(barcodeValue); // 8 digits
+        case 'PHARMA':
+            return /^[A-Za-z0-9\-\. $\/+%]+$/.test(barcodeValue); // Alphanumeric and some special characters
+        default:
+            return false; // Invalid type
+    }
+}

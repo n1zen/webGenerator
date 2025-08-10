@@ -77,6 +77,12 @@ main {
     font-weight: bold;
 }
 
+#barcode-form .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
 #barcode-form #add-btn {
     margin-top: 5px;
     margin-bottom: 10px;
