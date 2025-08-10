@@ -1,13 +1,15 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #ececec;
     margin: 0;
     padding: 0;
+    height: 100vh;
+    display: block;
 }
 
 header {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
@@ -74,22 +76,6 @@ main {
     margin-bottom: 5px;
     font-weight: bold;
 }
-/* 
-#barcode-form .checkbox {
-    width: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-#barcode-form .checkbox label {
-    margin-bottom: 0;
-    margin-top: 2.5px;
-}
-#barcode-form input[type="checkbox"] {
-    margin-right: 5px;
-} */
 
 #barcode-form #add-btn {
     margin-top: 5px;
@@ -165,19 +151,6 @@ main {
     font-weight: bold;
 }
 
-/* .barcode-items li .edit-btn {
-    background-color: #29ec17;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.barcode-items li .edit-btn:hover {
-    background-color: #31da07;
-} */
-
 .barcode-items li .delete-btn {
     background-color: #e74c3c;
     color: white;
@@ -191,8 +164,25 @@ main {
     background-color: #c0392b;
 }
 
-.barcode-display {
-    display: none;
+.generate-btn {
+    background-color: #2f91e2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.generate-btn:hover {
+    background-color: #1a73e8;
+}
+
+.barcode-display-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
@@ -200,6 +190,19 @@ main {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.barcode-display {
+    display: flex;
+    align-items: center;
+    width: auto;
+    max-width: 600px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.disable {
+    display: none;
 }
 
 .barcode-display h2 {
@@ -211,4 +214,60 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.barcode-title {
+    margin-bottom: 2px;
+    padding: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.barcode-img {
+    margin-bottom: 10px;
+}
+
+.download-btn {
+    background-color: #2f91e2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    background-color: #1a73e8;
+}
+
+#download-all-btn {
+    margin-top: 20px;
+}
+
+footer {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #666;
+    font-size: 14px;
+    margin: 10px 0;
+    padding: 3px;
+}
+
+footer a {
+    color: #2f91e2;
+    text-decoration: none;
 }

@@ -5,13 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>JS Barcode Generator</title>
         <link rel="stylesheet" href="styles.css">
-        <script src="JsBarcode.all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
         <script src="index.js" defer></script>
     </head>
     <body>
         <header>
-            <h1>JS Barcode Generator</h1>
-            <p>Generate barcodes using JSBarcode library</p>
+            <h1>Web Barcode Generator</h1>
+            <p>Generate and download barcodes online.</p>
         </header>
         <main>
             <div class="form-container">
@@ -31,10 +32,6 @@
                             <option value="EAN8">EAN8</option>
                             <option value="PHARMA">PHARMA</option>
                         </select>
-                        <!-- <div class="checkbox">
-                            <input type="checkbox" id="show-text" checked>
-                            <label for="show-text" id="show-text-label">Show Text</label>
-                        </div> -->
                     </fieldset>
                     <button id="add-btn" type="button">Add Barcode</button>
                 </div>
@@ -45,26 +42,28 @@
                     </div>
                     <ul class="barcode-items">
                         <!-- Barcode items will be dynamically added here -->
-                        <li class="barcode-item">
+                        <!-- <li class="barcode-item">
                             <div class="data-container">
                                 <span class="barcode-name">Sample Barcode</span>
                                 <span class="barcode-text">000000</span>
                                 <span class="barcode-type">CODE128</span>
                             </div>
                             <div class="options">
-                                <!-- <button class="edit-btn">Edit</button> -->
                                 <button class="delete-btn">Delete</button>
                             </div>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
+                <button type="button" class="generate-btn">Generate Barcodes</button>
             </div>
-            <div class="barcode-display">
-                <h2>Generated Barcodes</h2>
-                <div class="barcode-container">
-                    <!-- Barcode SVG will be dynamically generated here -->
+            <div class="barcode-display-container disable">
+                <div class="barcode-display">
+                    <!-- This section will be populated with generated barcodes -->
                 </div>
             </div>
+            <footer>
+                <p>Created by: <a href="https://github.com/n1zen">n1zen</a></p>
+            </footer>
         </main>
     </body>
 </html>
