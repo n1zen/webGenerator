@@ -6,5 +6,5 @@ Created using [**JSBarcode**](https://github.com/lindell/JsBarcode) and [**JSZip
 ## Known issues
 Not all barcode types work yet. Below are the barcode types which are **WORKING**
 
-> CODE128
-> CODE39
+- CODE 128
+- CODE 39
