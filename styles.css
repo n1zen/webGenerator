@@ -266,6 +266,11 @@ main {
     margin-bottom: 10px;
 }
 
+.readme hr {
+    margin: 0;
+    padding: 0;
+}
+
 footer {
     width: 100%;
     max-width: 600px;
