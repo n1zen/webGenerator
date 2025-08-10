@@ -18,7 +18,9 @@
             <div class="form-container">
                 <div id="barcode-form">
                     <fieldset>
+                        <label for="barcode-name" id="barcode-name-label">Barcode Name</label>
                         <input type="text" id="barcode-name" placeholder="Enter barcode name here" required>
+                        <label for="itemcode-input" id="itemcode-label">Item Code</label>
                         <input type="text" id="itemcode-input" placeholder="Enter item code here" required>
                         <label for="barcode-type" id="barcode-type-label">Select Barcode Type:</label>
                         <select id="barcode-type">
@@ -51,6 +53,17 @@
                 <!-- <div class="barcode-display">
                     
                 </div> -->
+            </div>
+            <div class="readme">
+                <h1 id="online-barcode-generator">Online Barcode Generator</h1>
+                <p>Generate your barcodes online and download them all.</p>
+                <p>Created using <a href="https://github.com/lindell/JsBarcode"><strong>JSBarcode</strong></a> and <a href="https://github.com/Stuk/jszip"><strong>JSZip</strong></a>.</p>
+                <h2 id="known-issues">Known issues</h2>
+                <p>Not all barcode types work yet. Below are the barcode types which are <strong>WORKING</strong></p>
+                <ul>
+                    <li>CODE128</li>
+                    <li>CODE39</li>
+                </ul>
             </div>
             <footer>
                 <p>Created by: <a href="https://github.com/n1zen">n1zen</a></p>
