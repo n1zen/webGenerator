@@ -263,7 +263,7 @@ generateBtn.addEventListener('click', function() {
         // Create a download link for the barcode image
         const downloadSingleLink = document.createElement('a');
         downloadSingleLink.href = link;
-        downloadSingleLink.download = `${barcode.name} Barcode.png`;
+        downloadSingleLink.download = `${barcode.name}Barcode.png`;
 
         // Create a button to download the barcode image
         const downloadBtn = document.createElement('button');
@@ -292,7 +292,7 @@ generateBtn.addEventListener('click', function() {
         // Loop through all barcode URLs and add them to the zip
         barcodeURL.forEach(barcode => {
             const base64Data = barcode.dataURL.split(',')[1]; // Get the base64 part of the data URL
-            zip.file(`${barcode.name} Barcode.png`, base64Data, { base64: true });
+            zip.file(`${barcode.name}Barcode.png`, base64Data, { base64: true });
         });
         // Generate the zip file
         const zipBlob = await zip.generateAsync({type: 'blob'});
