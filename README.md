@@ -10,4 +10,5 @@ Here are the following issues:
 
 - CODE 93 does not work.
 - Error handling is not implemented well.
-- **Make sure that your barcode values are valid based on chosen barcode type**
+
+**Make sure that your barcode values are valid based on chosen barcode type**
