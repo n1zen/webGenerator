@@ -34,6 +34,31 @@ clearAllBtn.addEventListener('click', function() {
     displayBarcodeList();
 });
 
+function getBarcodeType(value) {
+    
+    switch (value) {
+        case 'CODE128':
+                return 'code128';
+            case 'EAN13':
+                return 'ean13';
+            case 'UPC':
+                return 'upc';
+            case 'CODE39':
+                return 'code39';
+            case 'ITF14':
+                return 'itf14';
+            case 'CODE93':
+                return 'code93';
+            case 'MSI':
+                return 'msi';
+            case 'EAN8':
+                return 'ean8';
+            case 'PHARMA':
+                return 'pharmacode';
+            default:
+                return null;
+    }
+}
 // Add item to the list
 const addItemBtn = document.getElementById('add-btn');
 addItemBtn.addEventListener('click', function() {
@@ -46,7 +71,9 @@ addItemBtn.addEventListener('click', function() {
     // Get the values from the input fields
     let barcodeName = nameTxtBox.value.trim();
     let barcodeValue = itemCodeTxtBox.value.trim();
-    let barcodeType = barcodeTypeSelect.value;
+    let barcodeType = getBarcodeType(barcodeTypeSelect.value);
+
+    console.log(barcodeType);
 
     // Validate if the inputs are not empty
     if(barcodeName == '' || barcodeName == null) {
@@ -62,8 +89,9 @@ addItemBtn.addEventListener('click', function() {
         return;
     }
 
+
     // Validate the barcode value based on the selected type
-    if (!validateBarcodeValue(barcodeValue, barcodeType)) {
+    if (!validateBarcodeValue(barcodeValue, barcodeTypeSelect.value)) {
         alert('Invalid barcode value for the selected type. Please check the format.');
         // Display an error message
         const errorMessage = document.getElementById('error-message');
