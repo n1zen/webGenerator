@@ -11,6 +11,20 @@ window.addEventListener('load', () => {
     displayBarcodeList();
 });
 
+function countItems() {
+    let itemCount = 0
+    const count = document.querySelector(".count");
+    barcodes.forEach((barcode) => {
+        itemCount += 1;
+    });
+    if (itemCount != 0) {
+        count.classList.remove("disable");
+        count.innerHTML(`Barcodes to generate: ${itemCount}`);
+    } else {
+        count.classList.add("disable");
+    }
+}
+
 function clearUrlStorage() {
     // Clear the barcode URL storage
     localStorage.removeItem('barcodeURL');
@@ -201,6 +215,9 @@ function displayBarcodeList() {
             console.log('Barcode deleted:', barcode);
             displayBarcodeList(); // Refresh the list display
         });
+
+        // count and display amount of barcodes to generate
+        countItems();
     });
 }
 
