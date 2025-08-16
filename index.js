@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
     displayBarcodeList();
 });
 
-
+/** 
 // Displays amount of barcodes to generate
 function countItems() {
     let itemCount = 0; // declare amount variable
@@ -25,7 +25,7 @@ function countItems() {
     // display on html element
     count.innerHTML(`Barcodes to generate: <strong>${itemCount}</strong>`);
 }
-
+*/
 function clearUrlStorage() {
     // Clear the barcode URL storage
     localStorage.removeItem('barcodeURL');
@@ -218,7 +218,7 @@ function displayBarcodeList() {
         });
 
         // count and display amount of barcodes to generate
-        countItems();
+        //countItems();
     });
 }
 
