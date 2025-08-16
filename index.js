@@ -11,21 +11,6 @@ window.addEventListener('load', () => {
     displayBarcodeList();
 });
 
-/** 
-// Displays amount of barcodes to generate
-function countItems() {
-    let itemCount = 0; // declare amount variable
-    const count = document.getElementById("count"); // get element to display amount
-
-    // loop through json to actually count how many items there are
-    barcodes.forEach((barcode) => {
-        itemCount += 1; // increment for each item in json
-    });
-
-    // display on html element
-    count.innerHTML(`Barcodes to generate: <strong>${itemCount}</strong>`);
-}
-*/
 function clearUrlStorage() {
     // Clear the barcode URL storage
     localStorage.removeItem('barcodeURL');
