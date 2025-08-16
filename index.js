@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
 
 function countItems() {
     let itemCount = 0
-    const count = document.querySelector(".count");
+    const count = document.getElementById("count");
     barcodes.forEach((barcode) => {
         itemCount += 1;
     });
