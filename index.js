@@ -11,18 +11,19 @@ window.addEventListener('load', () => {
     displayBarcodeList();
 });
 
+
+// Displays amount of barcodes to generate
 function countItems() {
-    let itemCount = 0
-    const count = document.getElementById("count");
+    let itemCount = 0; // declare amount variable
+    const count = document.getElementById("count"); // get element to display amount
+
+    // loop through json to actually count how many items there are
     barcodes.forEach((barcode) => {
-        itemCount += 1;
+        itemCount += 1; // increment for each item in json
     });
-    if (itemCount != 0) {
-        count.classList.remove("disable");
-        count.innerHTML(`Barcodes to generate: ${itemCount}`);
-    } else {
-        count.classList.add("disable");
-    }
+
+    // display on html element
+    count.innerHTML(`Barcodes to generate: <strong>${itemCount}</strong>`);
 }
 
 function clearUrlStorage() {
