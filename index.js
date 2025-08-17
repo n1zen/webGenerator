@@ -17,6 +17,39 @@ function clearUrlStorage() {
     console.log('Barcode URL storage cleared.');
 }
 
+function alphabetizeList() {
+
+    // Sort the barcodes alphabetically by name
+    barcodes.sort((a, b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+            return -1;
+        }
+        if (a.name.toLowerCase() > b.name.toLowerCase()) {
+            return 1;
+        }
+        return 0;
+    })
+    localStorage.setItem('barcodes', JSON.stringify(barcodes));
+    console.log('Barcodes list alphabetized:', barcodes);
+}
+function reverseList() {
+    // Reverse the order of the barcodes in the list
+    barcodes.reverse();
+    localStorage.setItem('barcodes', JSON.stringify(barcodes));
+    console.log('Barcodes list reversed:', barcodes);
+}
+
+function countItems() {
+    // Count the number of barcodes to generate
+    const itemCount = barcodes.length;
+    const counterDisplay = document.querySelector('.barcode-list span');
+    if (itemCount > 0) {
+        counterDisplay.textContent = `Amount of items to generate: ${itemCount}`;
+    } else {
+        counterDisplay.textContent = 'No items to generate.';
+    }
+}
+
 const clearAllBtn = document.querySelector('.clear-btn');
 clearAllBtn.addEventListener('click', function() {
     // Clear the barcodes JSON
@@ -37,6 +70,8 @@ clearAllBtn.addEventListener('click', function() {
 // Add item to the list
 const addItemBtn = document.getElementById('add-btn');
 addItemBtn.addEventListener('click', function() {
+
+    alphabetizeList(); // Alphabetize the list before adding a new item
 
     // Get the input fields
     const nameTxtBox = document.getElementById('barcode-name');
@@ -134,12 +169,16 @@ addItemBtn.addEventListener('click', function() {
     itemCodeTxtBox.value = '';
     barcodeTypeSelect.value = 'CODE128'; // Reset to default type
 
+    reverseList(); // Reverse the list to show the latest item at the top
+
     // Refresh the barcode list display
     displayBarcodeList();
 });
 
 // Function to display the barcodes list
 function displayBarcodeList() {
+
+    countItems(); // Update the item count display
 
     if (barcodes.length === 0) {
         // If no barcodes, show a message
