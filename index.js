@@ -11,6 +11,12 @@ window.addEventListener('load', () => {
     displayBarcodeList();
 });
 
+function focusInput() {
+    // Focus on the first input field when the page loads
+    const nameTxtBox = document.getElementById('barcode-name');
+    nameTxtBox.focus();
+}
+
 function clearUrlStorage() {
     // Clear the barcode URL storage
     localStorage.removeItem('barcodeURL');
@@ -32,6 +38,10 @@ clearAllBtn.addEventListener('click', function() {
 
     // Refresh the barcode list display
     displayBarcodeList();
+
+    // focus on the input field
+    focusInput();
+
 });
 
 function getBarcodeType(value) {
@@ -164,6 +174,10 @@ addItemBtn.addEventListener('click', function() {
 
     // Refresh the barcode list display
     displayBarcodeList();
+
+    // focus on the input field
+    focusInput();
+    
 });
 
 // Function to display the barcodes list
